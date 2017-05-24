@@ -1,0 +1,14 @@
+<suite name="TestSuite">
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="TestTask">
+        <classes>
+            <class name="TestProgram" />
+                <methods>
+                    <include name="cabelasTest1" />
+                </methods>
+        </classes>
+    </test>
+</suite>
