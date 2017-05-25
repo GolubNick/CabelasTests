@@ -2,6 +2,8 @@ package models;
 
 import elements.*;
 
+import java.util.HashMap;
+
 public class CabelasPage extends PageObject {
 
     private static CabelasPage instance;
@@ -17,6 +19,8 @@ public class CabelasPage extends PageObject {
     private Button yourAccount;
     private Dropdown yourAccountDropdown;
     private Dropdown categoriesBlock;
+    private Link aboutUs;
+    private Link ourHistory;
 
     public static CabelasPage get() {
         if (instance == null) {
@@ -38,6 +42,8 @@ public class CabelasPage extends PageObject {
         signIn = new Button("//*[@class='icon-headerSignInBtn']");
         yourAccountDropdown = new Dropdown("//*[@class='signInDropdown']");
         categoriesBlock = new Dropdown("//*[@class='shopDropdown home']");
+        aboutUs = new Link("//*[@id='footer_aboutUs']");
+        ourHistory = new Link("//*[@id='footer_aboutUs']");
 
         return this;
     }
@@ -103,5 +109,20 @@ public class CabelasPage extends PageObject {
 
     public String getGreyTextSearchField(){
         return searchField.getGreyText();
+    }
+
+    public String getURLAboutUs(){
+        return aboutUs.getUrlValue();
+    }
+
+    public HashMap<String, String> getAllItemsAboutUs(){
+        HashMap<String, String> mapItems = new HashMap<>();
+        Label labels = new Label(aboutUs.getLocator() + "/p");
+        int count = labels.getCount();
+        for (int i = 1; i <= count; i++){
+            Link link = new Link(labels.getLocator() + "[" + i + "]");
+            mapItems.put(link.getText(), link.getUrlValue());
+        }
+        return mapItems;
     }
 }

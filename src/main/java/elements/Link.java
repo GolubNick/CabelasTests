@@ -14,4 +14,9 @@ public class Link extends Element {
     public void click() {
         $(By.xpath(locator)).click();
     }
+
+    @Override
+    public String getUrlValue(){
+        return $(By.xpath(locator + "//a")).getAttribute("href");
+    }
 }

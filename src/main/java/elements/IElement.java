@@ -16,5 +16,7 @@ public interface IElement {
 
     default String getUrlValue(){return "";}
 
+    default int getCount(){return 0;}
+
 
 }

@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public abstract class Element implements IElement {
 
@@ -29,7 +30,16 @@ public abstract class Element implements IElement {
     }
 
     @Override
+    public int getCount(){
+        return $$(By.xpath(locator)).size();
+    }
+
+    @Override
     public void waitForElement() {
         $(By.xpath(locator)).waitUntil(Condition.appear, 2000l);
+    }
+
+    public String getLocator(){
+        return locator.toString();
     }
 }

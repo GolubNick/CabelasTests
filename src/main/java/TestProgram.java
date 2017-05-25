@@ -1,7 +1,9 @@
 
+import managers.TestHelper;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class TestProgram extends UpTests{
 
@@ -10,6 +12,10 @@ public class TestProgram extends UpTests{
     private final String GREY_TEXT_SAERCH_FIELD = "What are you looking for?";
     private final String[] YOUR_ACCOUNT_NOT_SIGN_IN = new String[]{"My Account","Order History","Wish List","Preferences","Create a New Account","or"};
     private final String[] CATEGORIES = new String[]{"HUNTING","SHOOTING","FISHING","BOATING","CAMPING","AUTO & ATV","CLOTHING","FOOTWEAR","HOME & CABIN","HOBBIES"};
+    private final String[] ABOUTUSNAME = new String[]{
+      "Our History","Investor Relations","Careers","Diversity and Inclusion","Sponsored Events","Support and Advertising",
+            "Consumer Product Safety","Brand Partners","Affiliate Programs","Pro Staff","Retail Store Survey",
+            "Sponsorships/Donations","Cabela's Outdoor Fund"};
 
     @Test
     public void cabelasTest1(){
@@ -38,4 +44,17 @@ public class TestProgram extends UpTests{
         assertTrue(getModel().getCabelasPage().getGreyTextSearchField().equals(GREY_TEXT_SAERCH_FIELD),"Search field contains grey text: " + GREY_TEXT_SAERCH_FIELD);
         assertTrue(getModel().getCabelasPage().isSearchButtonVisible(),"Search button is visible");
     }
+
+    @Test
+    public void cabelasTest2(){
+        logBusiness(1, "Check AboutUs section");
+        assertTrue(getModel().getCabelasPage().getURLAboutUs().contains("content.jsp?pageName=AboutUs"),"Link About Us contains: /content.jsp?pageName=AboutUs");
+        HashMap<String,String> actualMap = getModel().getCabelasPage().getAllItemsAboutUs();
+        HashMap<String,String> expectedMap = TestHelper.getItemsAboutUsCabelas();
+        for (int i = 0; i < ABOUTUSNAME.length; i++){
+            assertTrue(actualMap.get(ABOUTUSNAME[i]).contains(expectedMap.get(ABOUTUSNAME[i])));
+        }
+
+    }
+
 }
