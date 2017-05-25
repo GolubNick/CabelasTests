@@ -16,6 +16,12 @@ public class TestProgram extends UpTests{
       "Our History","Investor Relations","Careers","Diversity and Inclusion","Sponsored Events","Support and Advertising",
             "Consumer Product Safety","Brand Partners","Affiliate Programs","Pro Staff","Retail Store Survey",
             "Sponsorships/Donations","Cabela's Outdoor Fund"};
+    private final String[] YOURORDERNAME = new String[]{
+            "Track Your Order","Return Policy","Shipping Information","Legendary Guarantee"};
+    private final String[] SHOPPINGRESOURCES = new String[]{
+            "Gun Library","Online Guns","Gift Cards","Customer Reviews","Boats & Boat Centers","ATV","Corporate Outfitters","Military Discount Program","New Product Submission",
+            "Catalog Quick Order","Pricing/Specifications","Site Map"};
+    private final String[] OTHERDEPARTMENTS = new String[]{"Articles and Information","Game & Fish Information","Trophy Room"};
 
     @Test
     public void cabelasTest1(){
@@ -55,6 +61,29 @@ public class TestProgram extends UpTests{
             assertTrue(actualMap.get(ABOUTUSNAME[i]).contains(expectedMap.get(ABOUTUSNAME[i])));
         }
 
+        logBusiness(2, "Check Your order section");
+        assertTrue(getModel().getCabelasPage().getURLYourOrder().isEmpty(), "YOUR ORDER without link");
+        actualMap = getModel().getCabelasPage().getAllItemsYourOrder();
+        expectedMap = TestHelper.getItemsYourOrderCabelas();
+        for (int i = 0; i < YOURORDERNAME.length; i++){
+            assertTrue(actualMap.get(YOURORDERNAME[i]).contains(expectedMap.get(YOURORDERNAME[i])));
+        }
+
+        logBusiness(3, "Check Shopping Resources");
+        assertTrue(getModel().getCabelasPage().getURLShoppingResources().isEmpty(), "YOUR ORDER without link");
+        actualMap = getModel().getCabelasPage().getAllItemsShoppingResources();
+        expectedMap = TestHelper.getItemsmapShoppingResourcesCabelas();
+        for (int i = 0; i < SHOPPINGRESOURCES.length; i++){
+            assertTrue(actualMap.get(SHOPPINGRESOURCES[i]).contains(expectedMap.get(SHOPPINGRESOURCES[i])));
+        }
+
+        logBusiness(4, "Check Other Departments");
+        assertTrue(getModel().getCabelasPage().getURLOtherDepartments().isEmpty(), "OTHER DEPARTMENTS without link");
+        actualMap = getModel().getCabelasPage().getAllItemsOtherDepartments();
+        expectedMap = TestHelper.getItemsmapOtherDepartmentsCabelas();
+        for (int i = 0; i < OTHERDEPARTMENTS.length; i++){
+            assertTrue(actualMap.get(OTHERDEPARTMENTS[i]).contains(expectedMap.get(OTHERDEPARTMENTS[i])));
+        }
     }
 
 }

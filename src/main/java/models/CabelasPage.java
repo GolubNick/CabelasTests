@@ -20,7 +20,9 @@ public class CabelasPage extends PageObject {
     private Dropdown yourAccountDropdown;
     private Dropdown categoriesBlock;
     private Link aboutUs;
-    private Link ourHistory;
+    private Link yourOrder;
+    private Link shoppingResources;
+    private Link otherDepartments;
 
     public static CabelasPage get() {
         if (instance == null) {
@@ -43,7 +45,9 @@ public class CabelasPage extends PageObject {
         yourAccountDropdown = new Dropdown("//*[@class='signInDropdown']");
         categoriesBlock = new Dropdown("//*[@class='shopDropdown home']");
         aboutUs = new Link("//*[@id='footer_aboutUs']");
-        ourHistory = new Link("//*[@id='footer_aboutUs']");
+        yourOrder = new Link("//*[@id='footer_yourOrder']");
+        shoppingResources = new Link("//*[@id='footer_shoppingResources']");
+        otherDepartments = new Link("//*[@id='footer_otherDepartments']");
 
         return this;
     }
@@ -115,11 +119,54 @@ public class CabelasPage extends PageObject {
         return aboutUs.getUrlValue();
     }
 
+    public String getURLYourOrder(){
+        return yourOrder.getUrlValue();
+    }
+
+    public String getURLShoppingResources(){
+        return shoppingResources.getUrlValue();
+    }
+
+    public String getURLOtherDepartments(){
+        return otherDepartments.getUrlValue();
+    }
+
     public HashMap<String, String> getAllItemsAboutUs(){
         HashMap<String, String> mapItems = new HashMap<>();
         Label labels = new Label(aboutUs.getLocator() + "/p");
         int count = labels.getCount();
         for (int i = 1; i <= count; i++){
+            Link link = new Link(labels.getLocator() + "[" + i + "]");
+            mapItems.put(link.getText(), link.getUrlValue());
+        }
+        return mapItems;
+    }
+
+    public HashMap<String, String> getAllItemsYourOrder(){
+        HashMap<String, String> mapItems = new HashMap<>();
+        Label labels = new Label(yourOrder.getLocator() + "/p");
+        for (int i = 1; i <= 4; i++){
+            Link link = new Link(labels.getLocator() + "[" + i + "]");
+            mapItems.put(link.getText(), link.getUrlValue());
+        }
+        return mapItems;
+    }
+
+    public HashMap<String, String> getAllItemsShoppingResources(){
+        HashMap<String, String> mapItems = new HashMap<>();
+        Label labels = new Label(shoppingResources.getLocator() + "/p");
+        int count = labels.getCount();
+        for (int i = 1; i <= count; i++){
+            Link link = new Link(labels.getLocator() + "[" + i + "]");
+            mapItems.put(link.getText(), link.getUrlValue());
+        }
+        return mapItems;
+    }
+
+    public HashMap<String, String> getAllItemsOtherDepartments(){
+        HashMap<String, String> mapItems = new HashMap<>();
+        Label labels = new Label(otherDepartments.getLocator() + "/p");
+        for (int i = 1; i <= 3; i++){
             Link link = new Link(labels.getLocator() + "[" + i + "]");
             mapItems.put(link.getText(), link.getUrlValue());
         }
