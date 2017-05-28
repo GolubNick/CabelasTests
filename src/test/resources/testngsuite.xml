@@ -9,6 +9,7 @@
                 <methods>
                     <include name="cabelasTest1" />
                     <include name="cabelasTest2" />
+                    <include name="cabelasTest3" />
                 </methods>
         </classes>
     </test>

@@ -51,8 +51,8 @@ public class CabelasPage extends PageObject {
         yourOrder = new Link("//*[@id='footer_yourOrder']");
         shoppingResources = new Link("//*[@id='footer_shoppingResources']");
         otherDepartments = new Link("//*[@id='footer_otherDepartments']");
-        newThisWeek = new Link("//*[@id='footer_otherDepartments']");
-        bergainCave = new Button("//*[@class='saveFlyoutSection']//a[2]");
+        newThisWeek = new Link("//*[@class='saveFlyoutSection']//a[2]");
+        bergainCave = new Button("//*[contains(@class,'saveContainer')]");
 
         return this;
     }
