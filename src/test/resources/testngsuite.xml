@@ -8,6 +8,7 @@
             <class name="TestProgram" />
                 <methods>
                     <include name="cabelasTest1" />
+                    <include name="cabelasTest2" />
                 </methods>
         </classes>
     </test>

@@ -1,5 +1,6 @@
 package managers;
 
+import models.BergainCavePage;
 import models.CabelasPage;
 
 public class GetModel {
@@ -15,6 +16,10 @@ public class GetModel {
 
     public CabelasPage getCabelasPage(){
         return CabelasPage.get();
+    }
+
+    public BergainCavePage getBergainCavePage(){
+        return BergainCavePage.get();
     }
 
 }

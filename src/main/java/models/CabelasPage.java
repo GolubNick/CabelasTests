@@ -19,10 +19,13 @@ public class CabelasPage extends PageObject {
     private Button yourAccount;
     private Dropdown yourAccountDropdown;
     private Dropdown categoriesBlock;
+    private Dropdown bergainCaveDropdown;
+    private Button bergainCave;
     private Link aboutUs;
     private Link yourOrder;
     private Link shoppingResources;
     private Link otherDepartments;
+    private Link newThisWeek;
 
     public static CabelasPage get() {
         if (instance == null) {
@@ -48,6 +51,8 @@ public class CabelasPage extends PageObject {
         yourOrder = new Link("//*[@id='footer_yourOrder']");
         shoppingResources = new Link("//*[@id='footer_shoppingResources']");
         otherDepartments = new Link("//*[@id='footer_otherDepartments']");
+        newThisWeek = new Link("//*[@id='footer_otherDepartments']");
+        bergainCave = new Button("//*[@class='saveFlyoutSection']//a[2]");
 
         return this;
     }
@@ -171,5 +176,13 @@ public class CabelasPage extends PageObject {
             mapItems.put(link.getText(), link.getUrlValue());
         }
         return mapItems;
+    }
+
+    public void showBergainCave(){
+        bergainCave.click();
+    }
+
+    public void clickNewThisWeek(){
+        newThisWeek.click();
     }
 }

@@ -86,4 +86,18 @@ public class TestProgram extends UpTests{
         }
     }
 
+    @Test
+    public void cabelasTest3(){
+        logBusiness(1, "Go to Cabelas.com");
+        assertTrue(getModel().getCabelasPage().isVisible(), "Page opens");
+
+        logBusiness(2, "Bargain Cave > New This Week");
+        getModel().getCabelasPage().showBergainCave();
+        getModel().getCabelasPage().clickNewThisWeek();
+        assertTrue(getModel().getBergainCavePage().isVisible(), "New This Week page opens");
+
+        logBusiness(3, "Open any item, select random options and Add to Cart");
+
+    }
+
 }
