@@ -2,7 +2,7 @@ package elements;
 
 import java.util.List;
 
-public class GridNewThisWeek extends Element {
+public class GridNewThisWeek extends Elements {
 
     public GridNewThisWeek(String locator){
         super.locator = locator;

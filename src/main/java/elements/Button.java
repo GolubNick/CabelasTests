@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Button extends Element {
+public class Button extends Elements {
 
 
     public Button(String locator){
@@ -13,6 +13,7 @@ public class Button extends Element {
 
     @Override
     public void click() {
+        waitForElement();
         $(By.xpath(locator)).click();
     }
 

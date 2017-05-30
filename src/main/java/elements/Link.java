@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Link extends Element {
+public class Link extends Elements {
 
     public Link(String locator){
         super.locator = locator;

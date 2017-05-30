@@ -97,7 +97,32 @@ public class TestProgram extends UpTests{
         assertTrue(getModel().getBergainCavePage().isVisible(), "New This Week page opens");
 
         logBusiness(3, "Open any item, select random options and Add to Cart");
+        getModel().getBergainCavePage().clickFirstItem();
+        String title = getModel().getMensClothing().clickFirstItem();
+        getModel().getMensClothing().selectFirstValueOption();
+        getModel().getMensClothing().clickAddToCard();
+        assertTrue(getModel().getItemAddedToCart().isVisible(), "Item Added to Cart page opens");
+        assertTrue(getModel().getItemAddedToCart().isItemVisible(), "Added item present in Cart");
+        assertTrue(getModel().getItemAddedToCart().getItemTitleText().equals(title), "Title, item number, options of item is the same");
+        assertTrue(getModel().getItemAddedToCart().isInfoAboutItemVisible(), "Info about Cart present\n" +
+                "\"Items in Cart: 1\", \"Sub-Total XXX\", buttons \"View All Items in Cart\" and \"Checkout\"");
 
+        logBusiness(4, "Press Checkout");
+        getModel().getItemAddedToCart().clickCheckOut();
+        assertTrue(getModel().getCartPage().isVisible(), "Cart page opens");
+        assertTrue(getModel().getCartPage().getTitleItemText().contains("CART (1)"), "CART (1) title");
+        assertTrue(getModel().getCartPage().isItemVisible(), "Item present in cart.");
+        assertTrue(getModel().getCartPage().isItemTitleVisible(), "Item have title.");
+        assertTrue(getModel().getCartPage().isItemAttributesVisible(), "Item have options and item number");
+        assertTrue(getModel().getCartPage().isRemoveVisible(), "Item have remove button");
+        assertTrue(getModel().getCartPage().getQuantity().equals("1"), "Field with correct qty");
+        assertTrue(getModel().getCartPage().isPriceVisible(), "Price");
+        assertTrue(getModel().getCartPage().isKeepShoppingVisible(), "Button \"Keep Shopping\"");
+        assertTrue(getModel().getCartPage().isBeinCheckoutVisible(), "Button \"Begin Checkout\"");
+
+        logBusiness(5, "Press Remove for second item");
+        getModel().getCartPage().clickRemove();
+        assertTrue(getModel().getCartPage().getTitleItemText().contains("CART (0)"), "Item renoved from cart");
     }
 
 }

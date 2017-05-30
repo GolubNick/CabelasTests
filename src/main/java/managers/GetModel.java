@@ -1,7 +1,6 @@
 package managers;
 
-import models.BergainCavePage;
-import models.CabelasPage;
+import models.*;
 
 public class GetModel {
 
@@ -20,6 +19,18 @@ public class GetModel {
 
     public BergainCavePage getBergainCavePage(){
         return BergainCavePage.get();
+    }
+
+    public MensClothing getMensClothing(){
+        return MensClothing.get();
+    }
+
+    public ItemAddedToCart getItemAddedToCart(){
+        return ItemAddedToCart.get();
+    }
+
+    public CartPage getCartPage(){
+        return CartPage.get();
     }
 
 }
