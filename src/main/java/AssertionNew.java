@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.testng.ScreenShooter;
+import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Listeners;
@@ -20,7 +21,7 @@ public class AssertionNew extends Assert{
     public static void assertTrue(boolean condition, String message) {
         stepNumber += 0.1;
         String step = String.valueOf(stepNumber).split("00")[0];
-        String pathFile = takeScreenShot(message.replace(" ",""));
+        String pathFile = takeScreenShot();
         if(condition) {
             Reporter.log("<p><font color=\"FFFFFF\" style=\"background-color:#228B22\">"
                     +format(Boolean.valueOf(condition), Boolean.TRUE, message, step)+"</font></p>");
@@ -46,17 +47,18 @@ public class AssertionNew extends Assert{
                 "<br>Actual: " + OPENING_CHARACTER + actual + ASSERT_RIGHT + "<br>";
     }
 
-    private static String takeScreenShot(String nameFile){
-        File scrFile = null;
-//        String pathFile = "D:\\workspace\\provectus\\test-output\\html\\" + nameFile + System.currentTimeMillis() / 1000L + ".png";
+    private static String takeScreenShot(){
+        File scrFile;
+        String pathFile = System.getProperty("user.dir") + "\\target\\html\\" + System.currentTimeMillis() / 1000L + ".png";
         try {
             scrFile = Screenshots.takeScreenShotAsFile();
-//            FileUtils.copyFile(scrFile, new File(pathFile));
+            FileUtils.copyFile(scrFile, new File(pathFile));
+            scrFile.delete();
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(scrFile.getAbsolutePath());
-        return scrFile.getAbsolutePath();
+        System.out.println(pathFile);
+        return pathFile;
     }
 }

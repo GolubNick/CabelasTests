@@ -64,8 +64,8 @@
                             <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
                         </property>
                     </properties>
-                    <workingDirectory>target/</workingDirectory>
-                    <!--<reportsDirectory> ${project.build.directory}/myreports </reportsDirectory>-->
+                    <!--<workingDirectory>target/</workingDirectory>-->
+                    <reportsDirectory>${project.build.directory}</reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>
