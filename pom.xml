@@ -65,7 +65,8 @@
                         </property>
                     </properties>
                     <!--<workingDirectory>target/</workingDirectory>-->
-                    <reportsDirectory>${project.build.directory}</reportsDirectory>
+                    <!--<reportsDirectory>${project.build.directory}</reportsDirectory>-->
+                    <reportsDirectory>C:\htmlreports\cabelas\target</reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>
