@@ -49,8 +49,8 @@ public class AssertionNew extends Assert{
 
     private static String takeScreenShot(){
         File scrFile;
-        String pathFile = System.getProperty("user.dir") + "\\target\\html\\" + System.currentTimeMillis() / 1000L + ".png";
-//        String pathFile = "C:\\htmlreports\\cabelas\\target\\html\\" + System.currentTimeMillis() / 1000L + ".png";
+//        String pathFile = System.getProperty("user.dir") + "\\target\\html\\" + System.currentTimeMillis() / 1000L + ".png";
+        String pathFile = "C:\\htmlreports\\cabelas\\target\\html\\" + System.currentTimeMillis() / 1000L + ".png";
         try {
             scrFile = Screenshots.takeScreenShotAsFile();
             FileUtils.copyFile(scrFile, new File(pathFile));
