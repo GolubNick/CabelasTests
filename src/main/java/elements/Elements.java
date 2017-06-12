@@ -14,7 +14,7 @@ public abstract class Elements implements IElement {
     @Override
     public boolean isVisible() {
         waitForElement();
-        return $(By.xpath(locator)).exists();
+        return $(By.xpath(locator)).isDisplayed();
     }
 
     @Override
