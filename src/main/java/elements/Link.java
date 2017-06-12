@@ -1,6 +1,8 @@
 package elements;
 
+import com.codeborne.selenide.ex.ElementNotFound;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -17,6 +19,11 @@ public class Link extends Elements {
 
     @Override
     public String getUrlValue(){
-        return $(By.xpath(locator + "//a")).getAttribute("href");
+        try {
+            return $(By.xpath(locator + "//a")).getAttribute("href");
+        }
+        catch (ElementNotFound e){
+            return "";
+        }
     }
 }

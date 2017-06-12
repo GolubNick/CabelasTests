@@ -25,6 +25,9 @@ public class CabelasPage extends PageObject {
     private Link yourOrder;
     private Link shoppingResources;
     private Link otherDepartments;
+    private Link yourOrderLink;
+    private Link shoppingResourcesLink;
+    private Link otherDepartmentsLink;
     private Link newThisWeek;
 
     public static CabelasPage get() {
@@ -51,6 +54,9 @@ public class CabelasPage extends PageObject {
         yourOrder = new Link("//*[@id='footer_yourOrder']");
         shoppingResources = new Link("//*[@id='footer_shoppingResources']");
         otherDepartments = new Link("//*[@id='footer_otherDepartments']");
+        yourOrderLink = new Link("//*[@id='footer_yourOrder']/b[1]");
+        shoppingResourcesLink = new Link("//*[@id='footer_shoppingResources']/b[1]");
+        otherDepartmentsLink = new Link("//*[@id='footer_otherDepartments']/b[1]");
         newThisWeek = new Link("//*[@class='saveFlyoutSection']//a[2]");
         bergainCave = new Button("//*[contains(@class,'saveContainer')]");
 
@@ -125,15 +131,15 @@ public class CabelasPage extends PageObject {
     }
 
     public String getURLYourOrder(){
-        return yourOrder.getUrlValue();
+        return yourOrderLink.getUrlValue();
     }
 
     public String getURLShoppingResources(){
-        return shoppingResources.getUrlValue();
+        return shoppingResourcesLink.getUrlValue();
     }
 
     public String getURLOtherDepartments(){
-        return otherDepartments.getUrlValue();
+        return otherDepartmentsLink.getUrlValue();
     }
 
     public HashMap<String, String> getAllItemsAboutUs(){

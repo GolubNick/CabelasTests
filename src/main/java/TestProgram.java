@@ -58,7 +58,7 @@ public class TestProgram extends UpTests{
         HashMap<String,String> actualMap = getModel().getCabelasPage().getAllItemsAboutUs();
         HashMap<String,String> expectedMap = TestHelper.getItemsAboutUsCabelas();
         for (int i = 0; i < ABOUTUSNAME.length; i++){
-            assertTrue(actualMap.get(ABOUTUSNAME[i]).contains(expectedMap.get(ABOUTUSNAME[i])));
+            assertTrue(actualMap.get(ABOUTUSNAME[i]).contains(expectedMap.get(ABOUTUSNAME[i])), ABOUTUSNAME[i] + ": " + expectedMap.get(ABOUTUSNAME[i]));
         }
 
         logBusiness(2, "Check Your order section");
@@ -66,15 +66,15 @@ public class TestProgram extends UpTests{
         actualMap = getModel().getCabelasPage().getAllItemsYourOrder();
         expectedMap = TestHelper.getItemsYourOrderCabelas();
         for (int i = 0; i < YOURORDERNAME.length; i++){
-            assertTrue(actualMap.get(YOURORDERNAME[i]).contains(expectedMap.get(YOURORDERNAME[i])));
+            assertTrue(actualMap.get(YOURORDERNAME[i]).contains(expectedMap.get(YOURORDERNAME[i])), YOURORDERNAME[i] + ": " + expectedMap.get(YOURORDERNAME[i]));
         }
 
         logBusiness(3, "Check Shopping Resources");
-        assertTrue(getModel().getCabelasPage().getURLShoppingResources().isEmpty(), "YOUR ORDER without link");
+        assertTrue(getModel().getCabelasPage().getURLShoppingResources().isEmpty(), "SHOPPING RESOURCES without link");
         actualMap = getModel().getCabelasPage().getAllItemsShoppingResources();
         expectedMap = TestHelper.getItemsmapShoppingResourcesCabelas();
         for (int i = 0; i < SHOPPINGRESOURCES.length; i++){
-            assertTrue(actualMap.get(SHOPPINGRESOURCES[i]).contains(expectedMap.get(SHOPPINGRESOURCES[i])));
+            assertTrue(actualMap.get(SHOPPINGRESOURCES[i]).contains(expectedMap.get(SHOPPINGRESOURCES[i])), SHOPPINGRESOURCES[i] + ": " + expectedMap.get(SHOPPINGRESOURCES[i]));
         }
 
         logBusiness(4, "Check Other Departments");
