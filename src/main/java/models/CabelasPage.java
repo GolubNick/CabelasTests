@@ -35,7 +35,7 @@ public class CabelasPage extends PageObject {
     }
 
     private CabelasPage init() {
-        super.pageLocator = new Page("//*[@class = 'homeBody']");
+        super.pageLocator = new Page("//*[@class='homeBody']");
         cabelasClub = new Button("//*[@class='headerNavClubLink']");
         cabelasCanada = new Button("//*[@class='headerNavCabelasCanadaLink']");
         checkout = new Button("//*[@class='cartCheckout']");
